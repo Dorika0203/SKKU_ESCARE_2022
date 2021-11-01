@@ -19,6 +19,9 @@ repositories {
 }
 
 dependencies {
+// https://mvnrepository.com/artifact/com.google.common/google-collect
+    implementation("com.google.guava:guava:31.0.1-jre")
+
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
