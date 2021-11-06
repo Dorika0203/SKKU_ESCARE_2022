@@ -3,21 +3,24 @@ package com.example.kakaotest.job.chunkorientedtask;
 import com.example.kakaotest.component.UUID;
 import com.example.kakaotest.component.temp;
 import com.fortanix.sdkms.v1.ApiClient;
-import com.fortanix.sdkms.v1.ApiException;
-import com.fortanix.sdkms.v1.api.GroupsApi;
-import com.fortanix.sdkms.v1.api.SecurityObjectsApi;
-import com.fortanix.sdkms.v1.model.*;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.StepExecutionListener;
 import org.springframework.batch.item.ItemProcessor;
 
-import java.util.Arrays;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Slf4j
-public class Step2ItemProcessor implements ItemProcessor<UUID, String>, StepExecutionListener {
+public class Step2ItemProcessor implements ItemProcessor<UUID, List<HashMap>>, StepExecutionListener {
 
 //    private DataShareBean<ApiClient> dataShareBean = new DataShareBean();
 
@@ -30,24 +33,57 @@ public class Step2ItemProcessor implements ItemProcessor<UUID, String>, StepExec
     }
 
     @Override
-    public String process(UUID uuid) throws Exception {
-        GroupsApi groupsApi = new GroupsApi(apiClient);
-        Group group = groupsApi.getGroup(uuid.getUUID());
-        SecurityObjectsApi securityObjectsApi = new SecurityObjectsApi(apiClient);
-        System.out.println("Group name: " + group.getName());
-        System.out.println("Group ID: " + group.getGroupId());
-        System.out.println("Group Users: " + group.getCreator().getUser());
-        List<KeyObject> keyObjects = securityObjectsApi.getSecurityObjects(null, group.getGroupId(), null);
+    public List<HashMap> process(UUID uuid) throws Exception {
 
-        //이거 존나 터짐 keyobject에서 deprecation date 찾아야함 ㅅㅂ
-        //        keyObjects.forEach((keyObject) -> {
-//            keyObject.getHistory().forEach((history)->{
-//                System.out.println("expire: " + history.getExpiry());
-//            });
-//            System.out.println("key name: " + keyObject.getName() + " keyDeactivationDate: " + "temp");
-//        });
+        List<HashMap> mailObjects = new ArrayList();
+
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<JsonNode> BearerTokenResponse = Unirest.post("https://sdkms.fortanix.com/sys/v1/session/auth")
+                .header("Authorization", "Basic Mzg0ZDRiMzYtYmJlZS00MDhmLTkxNzQtNmI0NWQ3ZGQwOTc3OmlEX281TnNnZ1FMTnlqWDhBU1lOeG95MjBqNFZ1OUFlWkRFYi0yVldfajYxWGZjaW93OUVOanN1U1VmMWtlaEZ3SE9lT0d5THV2RzUybDlaMGl5TXB3")
+                .asJson();
+
+        String accessToken = BearerTokenResponse.getBody().getObject().getString("access_token");
+
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<JsonNode> keyObjectsResponse = Unirest.get("https://sdkms.fortanix.com/crypto/v1/keys?group_id=" + uuid.getUUID())
+                .header("Authorization", "Bearer " + accessToken)
+                .asJson();
+
+        JSONArray keyObjectArray = keyObjectsResponse.getBody().getArray();
+
+        for (int i = 0; i < keyObjectArray.length(); i++) {
+
+            JSONObject keyObject = keyObjectArray.getJSONObject(i);
+            System.out.println(keyObject.getString("name"));
+
+            try {
+
+                String deactivationDate = keyObject.getString("deactivation_date");
+                System.out.println(deactivationDate);
+                LocalDateTime d = LocalDateTime.parse(deactivationDate, DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'"));
+                LocalDateTime currentTime = LocalDateTime.now();
+                ZoneId zoneId = ZoneId.systemDefault();
+                long dateLeftForDeactivation = (d.atZone(zoneId).toEpochSecond() - currentTime.atZone(zoneId).toEpochSecond()) / 86400;
+                System.out.println("deactivate time epoch: " + d.atZone(zoneId).toEpochSecond());
+                System.out.println("current time epoch: " + currentTime.atZone(zoneId).toEpochSecond());
+                System.out.println("dateLeftForDeactivation: " + dateLeftForDeactivation);
+                if(isKeyToBeMailed(dateLeftForDeactivation)) {
+                    mailObjects.add(new HashMap<String,String>(){{
+                        put("name", keyObject.getString("name"));
+                        put("deactivate_date", String.valueOf(deactivationDate));
+                        put("acct_id", keyObject.getString("acct_id"));
+                    }});
+                }
+
+            } catch (Exception e) {
+                System.out.println("deactivation null");
+            }
+
+        }
+
+
         log.info(">>>>>>working");
-        return "hi";
+        return mailObjects;
     }
 
 
@@ -56,4 +92,10 @@ public class Step2ItemProcessor implements ItemProcessor<UUID, String>, StepExec
         return ExitStatus.COMPLETED;
     }
 
+    private boolean isKeyToBeMailed(long dateLeftForDeactivation) {
+        if (dateLeftForDeactivation == 30 || dateLeftForDeactivation == 7 || dateLeftForDeactivation == 1)
+            return true;
+        else
+            return false;
+    }
 }

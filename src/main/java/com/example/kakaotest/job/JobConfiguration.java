@@ -10,6 +10,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
@@ -21,6 +22,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import javax.sql.DataSource;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 @Slf4j // log 사용을 위한 lombok 어노테이션
 @RequiredArgsConstructor // 생성자 DI를 위한 lombok 어노테이션
@@ -50,12 +53,11 @@ public class JobConfiguration {
                 .build();
     }
 
-
     @Bean
     @JobScope
     public Step checkExpireDateByUUID(@Value("#{jobParameters[requestDate]}") Date requestDate) {
         return stepBuilderFactory.get("jdbcCursorItemReaderStep")
-                .<UUID, String>chunk(1)
+                .<UUID, List<HashMap>>chunk(1)
                 .reader(step2ItemReader())
                 .processor(step2ItemProcessor())
                 .writer(step2ItemWriter())
@@ -74,16 +76,19 @@ public class JobConfiguration {
     }
 
 
-    private ItemProcessor<UUID, String> step2ItemProcessor() {
+    private ItemProcessor<UUID, List<HashMap>> step2ItemProcessor() {
         return new Step2ItemProcessor();
         }
 
 
 
-    private ItemWriter<String> step2ItemWriter() {
+    private ItemWriter<List<HashMap>> step2ItemWriter() {
         return items -> {
-            for (String item : items) {
-                log.info("uuid={}", item);
+            for (List item : items) {
+                for (int i = 0; i < item.size(); i++) {
+                    HashMap<String, String> mailObject = (HashMap<String, String>) item.get(i);
+                    log.info(mailObject.get("name"));
+                }
             }
         };
     }
