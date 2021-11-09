@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.sql.DataSource;
 import java.util.Date;
@@ -44,9 +46,17 @@ public class JobConfiguration {
                 .build();
     }
 
+
+    // 여러개 job 중 취사선택 예시 작성 위해서 생성
+    @Bean
+    public Job job2() {
+        return jobBuilderFactory.get("job2").start(fortanixUserAuthenticate(null)).next(checkExpireDateByUUID(null)).build();
+    }
+
     @Bean
     @JobScope
-    public Step fortanixUserAuthenticate(@Value("#{jobParameters[requestDate]}") Date requestDate) {
+    public Step fortanixUserAuthenticate(@Value("#{jobParameters[date]}") Date requestDate) {
+        log.info("------------------------------------------------ Job Started! ------------------------------------------");
         log.info(">>>>> requestDate = {}", requestDate);
         return stepBuilderFactory.get("fortanixUserAuthenticate")
                 .tasklet(new FortanixAuthTasklet())
@@ -55,7 +65,7 @@ public class JobConfiguration {
 
     @Bean
     @JobScope
-    public Step checkExpireDateByUUID(@Value("#{jobParameters[requestDate]}") Date requestDate) {
+    public Step checkExpireDateByUUID(@Value("#{jobParameters[date]}") Date requestDate) {
         return stepBuilderFactory.get("jdbcCursorItemReaderStep")
                 .<UUID, List<HashMap>>chunk(1)
                 .reader(step2ItemReader())

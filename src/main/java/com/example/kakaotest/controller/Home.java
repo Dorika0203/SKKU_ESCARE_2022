@@ -15,12 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Slf4j
-@RequiredArgsConstructor
 @Controller
 public class Home {
-
-    private final JobLauncher jobLauncher;
-    private final Job job;
 
     @RequestMapping("/")
     public String hello() {
@@ -30,14 +26,14 @@ public class Home {
     @GetMapping("/launchjob")
     public String handle() throws Exception {
 
-        try {
-            JobParameters jobParameters = new JobParametersBuilder()
-                    .addDate("date",  new Date())
-                    .toJobParameters();
-            jobLauncher.run(job, jobParameters);
-        } catch (Exception e) {
-            log.info(e.getMessage());
-        }
+//        try {
+//            JobParameters jobParameters = new JobParametersBuilder()
+//                    .addDate("date",  new Date())
+//                    .toJobParameters();
+//            jobLauncher.run(job, jobParameters);
+//        } catch (Exception e) {
+//            log.info(e.getMessage());
+//        }
 
         return "/home_page";
     }
