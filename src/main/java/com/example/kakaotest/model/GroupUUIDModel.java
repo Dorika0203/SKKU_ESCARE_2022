@@ -17,4 +17,7 @@ public class GroupUUIDModel {
 
     @Column
     private String uuid;
+
+    @Column
+    private String mailAddress;
 }
