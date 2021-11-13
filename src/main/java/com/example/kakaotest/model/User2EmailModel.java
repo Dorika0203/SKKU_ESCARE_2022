@@ -1,14 +1,14 @@
 package com.example.kakaotest.model;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
 
+
 @Data
 @Entity
-@Table(name = "User2Key")
-public class User2KeyModel {
+@Table(name = "User2Email")
+public class User2EmailModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +19,5 @@ public class User2KeyModel {
     private UserDataModel user;
 
     @Column
-    private String UUID;
+    private String email;
 }

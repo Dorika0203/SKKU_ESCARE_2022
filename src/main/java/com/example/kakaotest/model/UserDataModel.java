@@ -15,16 +15,12 @@ public class UserDataModel {
     @Column
     private byte[] pw;
 
-    @Column
-    private String email;
-
     public UserDataModel() {
         super();
     }
-    public UserDataModel(String id, byte[] pw, String email)
+    public UserDataModel(String id, byte[] pw)
     {
         this.id = id;
         this.pw = pw;
-        this.email = email;
     }
 }
