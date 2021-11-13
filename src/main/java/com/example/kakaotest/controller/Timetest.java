@@ -28,7 +28,7 @@ public class Timetest{
         this.job = job;
     }
 
-    @Scheduled(fixedDelay = 10000) // 10초
+    @Scheduled(cron = "0 00 00 * * *") // 10초
     public void simpleJobIterable() {
         try {
             JobParameters jobParameters = new JobParametersBuilder()
