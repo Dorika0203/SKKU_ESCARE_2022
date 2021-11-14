@@ -33,7 +33,7 @@
         </form>
 
         <!-- To Sign Up -->
-        <a href="signup" class="float-middle btn btn-outline-primary">Sign Up</a>
+<%--        <a href="signup" class="float-middle btn btn-outline-primary">Sign Up</a>--%>
 
     </div>
 </div>
