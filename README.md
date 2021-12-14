@@ -30,7 +30,9 @@ docker 설치 후 command 실행
 
 ### 실행 방법
 - root directory에서 다음 커맨드 실행
+
 ```> ./gradlew bootWar```
+
 ```> docker-compose up```
 - DB 초기화 관련
 
