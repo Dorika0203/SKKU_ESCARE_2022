@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.5.6'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'war'
 }
 
 group = 'com.example'
@@ -34,12 +35,15 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-quartz"
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'javax.servlet:jstl'
-    compileOnly "com.fortanix:sdkms-client:4.2.1500"
+    implementation "com.fortanix:sdkms-client:4.2.1500"
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.batch:spring-batch-test'
 }
 
+bootWar{
+    archiveName("app.war")
+}
 test {
     useJUnitPlatform()
 }
