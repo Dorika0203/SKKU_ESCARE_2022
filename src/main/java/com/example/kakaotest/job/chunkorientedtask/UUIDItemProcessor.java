@@ -32,8 +32,14 @@ public class UUIDItemProcessor implements ItemProcessor<GroupUUIDModel, List<Mai
         HttpResponse<JsonNode> BearerTokenResponse = Unirest.post("https://sdkms.fortanix.com/sys/v1/session/auth")
                 .header("Authorization", "Basic Mzg0ZDRiMzYtYmJlZS00MDhmLTkxNzQtNmI0NWQ3ZGQwOTc3OmlEX281TnNnZ1FMTnlqWDhBU1lOeG95MjBqNFZ1OUFlWkRFYi0yVldfajYxWGZjaW93OUVOanN1U1VmMWtlaEZ3SE9lT0d5THV2RzUybDlaMGl5TXB3")
                 .asJson();
-
         String accessToken = BearerTokenResponse.getBody().getObject().getString("access_token");
+
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<String> keyObjectsResponse1 = Unirest.get("https://sdkms.fortanix.com/crypto/v1/keys?group_id=" + uuid.getUuid())
+                .header("Authorization", "Bearer " + accessToken)
+                .asString();
+        System.out.println(uuid.getUuid());
+        System.out.println(keyObjectsResponse1.getBody());
 
         //auth and get keys
         Unirest.setTimeouts(0, 0);

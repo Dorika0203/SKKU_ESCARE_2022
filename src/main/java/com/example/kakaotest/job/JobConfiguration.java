@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -32,6 +33,7 @@ import java.util.List;
 @Slf4j // log 사용을 위한 lombok 어노테이션
 @RequiredArgsConstructor // 생성자 DI를 위한 lombok 어노테이션
 @Configuration
+@EnableBatchProcessing
 @Service
 public class JobConfiguration {
 
@@ -75,7 +77,7 @@ public class JobConfiguration {
     @Bean
     public JdbcCursorItemReader<GroupUUIDModel> UUIDItemReader() {
         return new JdbcCursorItemReaderBuilder<GroupUUIDModel>()
-                .fetchSize(1)
+                .fetchSize(2)
                 .dataSource(dataSource)
                 .rowMapper(new BeanPropertyRowMapper<>(GroupUUIDModel.class))
                 .sql("SELECT * FROM uuid")
