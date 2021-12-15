@@ -5,6 +5,5 @@ build:
   stage: build
   script:
     - echo hi
-    - docker-compose up
   tags:
-    - runner
+    - runner74
