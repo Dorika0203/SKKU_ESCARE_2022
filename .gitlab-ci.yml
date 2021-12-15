@@ -5,6 +5,6 @@ build:
   stage: build
   script:
     - echo hi
-    - docker-compose up
+    - docker build -t kakaotest:0.1 .
   tags:
     - runner
