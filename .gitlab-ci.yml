@@ -1,0 +1,9 @@
+stages:
+  -test
+
+lets_test:
+  stage: : test
+  script:
+    - echo hi
+  tags:
+    - runner

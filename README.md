@@ -29,7 +29,9 @@ docker 설치 후 command 실행
 >> 프로젝트의 Dockerfile을 참고해서 프로젝트 이미지를 먼저 생성한 후, mariaDB 이미지와 프로젝트 이미지를 docker-compose로 같이 올리게 됨.
 
 ### 실행 방법
-- 터미널에서 다음 커맨드 실행
+- root directory에서 다음 커맨드 실행
+
+```> ./gradlew bootWar```
 
 ```> docker-compose up```
 - DB 초기화 관련
