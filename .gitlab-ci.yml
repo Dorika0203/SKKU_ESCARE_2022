@@ -1,7 +1,7 @@
 stages:
   - build
 variables:
-  DOCKER_HOST: tcp://host.docker.internal:2375
+  DOCKER_HOST: tcp://gitlab-dind:2375
 build:
   tags:
     - runner
