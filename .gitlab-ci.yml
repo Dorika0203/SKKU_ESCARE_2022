@@ -4,8 +4,8 @@ stages:
 build:
   image: docker:19.03.12
   stage: build
-#  services:
-#    - docker:dind
+  services:
+    - docker:dind
   script:
     - echo hi
     - docker login -u sympathize123 -p glpat-Yz5kmXDh9NNV4G72dSBc
