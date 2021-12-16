@@ -1,13 +1,14 @@
 stages:
   - build
-
+variables:
+  DOCKER_HOST: tcp://host.docker.internal:2375
 build:
   tags:
     - runner
   image: docker:latest
   stage: build
-  services:
-    - docker:dind
+#  services:
+#    - docker:dind
   script:
     - echo hi
     - docker login -u sympathize123 -p glpat-Yz5kmXDh9NNV4G72dSBc
