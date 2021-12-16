@@ -10,6 +10,7 @@ build:
   image: docker:latest
   stage: build
   script:
+    - ./gradlew bootWar
     - echo hi
     - docker build -t kakaotest:0.1 .
 #
