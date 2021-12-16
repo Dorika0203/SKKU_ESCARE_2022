@@ -15,4 +15,3 @@ build:
     - ./gradlew bootWar
     - echo hi
     - docker build -t kakaotest:0.1 .
-#
