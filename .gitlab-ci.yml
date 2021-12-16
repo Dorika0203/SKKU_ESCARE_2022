@@ -5,7 +5,6 @@ build:
   stage: build
   script:
     - echo hi
-    - uname -a
     - docker build -t kakaotest:0.1 .
   tags:
     - runner
