@@ -2,10 +2,10 @@ stages:
   - build
 
 build:
-  image: docker:latest
+  image: docker:19.03.12
   stage: build
-  services:
-    - docker:dind
+#  services:
+#    - docker:dind
   script:
     - echo hi
     - docker build -t kakaotest:0.1 .
