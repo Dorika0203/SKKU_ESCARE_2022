@@ -7,8 +7,6 @@ build:
     - runner
   image: docker:latest
   stage: build
-  services:
-    - docker:dind
   script:
     - echo hi
     - docker build -t kakaotest:0.1 .
