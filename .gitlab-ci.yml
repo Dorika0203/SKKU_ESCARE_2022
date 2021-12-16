@@ -13,3 +13,4 @@ build:
     - echo hi
     - docker login -u sympathize123 -p glpat-Yz5kmXDh9NNV4G72dSBc
     - docker build -t kakaotest:0.1 .
+    #
