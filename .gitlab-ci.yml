@@ -1,7 +1,9 @@
 stages:
   - build
-variables:
-  DOCKER_HOST: tcp://docker:2375
+
+before_script:
+  - docker info
+
 build:
   tags:
     - runner
