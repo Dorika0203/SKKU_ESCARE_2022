@@ -8,6 +8,8 @@ build:
   tags:
     - runner
   image: docker:latest
+  services:
+    - openjdk:16
   stage: build
   script:
     - ./gradlew bootWar
