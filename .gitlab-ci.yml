@@ -11,7 +11,8 @@ build-job: # This job runs in the build stage, which runs first.
   script:
     - ./gradlew bootWar
   cache:
-    key: whenever-with-dependencies paths
+    key: whenever-with-dependencies
+    paths:
       - .gradle/wrapper
       - .gradle/caches
 
