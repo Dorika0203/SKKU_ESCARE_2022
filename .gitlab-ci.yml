@@ -3,13 +3,19 @@ stages:
   - build
 
 
-build-job:       # This job runs in the build stage, which runs first.
+build-job: # This job runs in the build stage, which runs first.
   stage: build-job
   tags:
     - runner
   image: openjdk:16
   script:
     - ./gradlew bootWar
+  cache:
+    key: whenever-with-dependencies paths
+      - .gradle/wrapper
+      - .gradle/caches
+
+
   artifacts:
     paths:
       - ./build/libs/app.war
@@ -21,6 +27,6 @@ build:
   stage: build
   script:
     - echo hi
-    - docker login -u tim0726 -p glpat-Yz5kmXDh9NNV4G72dSBc
+    - docker login -u tim0726 -p minseo0726
     - docker build -t kakaotest:0.1 .
     - docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
