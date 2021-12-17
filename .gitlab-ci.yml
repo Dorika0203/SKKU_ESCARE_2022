@@ -21,5 +21,6 @@ build:
   stage: build
   script:
     - echo hi
+    - docker login -u tim0726 -p glpat-Yz5kmXDh9NNV4G72dSBc
     - docker build -t kakaotest:0.1 .
     - docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
