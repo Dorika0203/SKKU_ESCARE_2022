@@ -24,12 +24,10 @@ build:
     - runner
   image: docker:latest
   stage: build
-  before_script:
-    - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
   script:
     - echo hi
     - docker login -u tim0726 -p minseo0726
-    - docker buildx build --help #--platform linux/amd64 --tag tim0726/kakaotest:0.1 .
+    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
     - docker push tim0726/kakaotest:0.1
     #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
     #- ssh dorika@218.209.10.162
