@@ -32,6 +32,8 @@ build:
     - docker push tim0726/kakaotest:0.1
     #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
 deploy-image:
+  tags:
+    - runner
   stage: deploy
   before_script:
     - 'which ssh-agent || (apk update && apk add openssh-client)'
