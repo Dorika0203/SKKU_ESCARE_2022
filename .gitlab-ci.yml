@@ -74,7 +74,7 @@ deploy-image:
       c6sd/2pE19SYrxSqj7lcMfIxu6+jVPGu8gwlmtkkHsSpol8zmDgBEWZsw6o0mbUdprhDx2
       8FwxDLdgbq1PhqrOUerFNJrrMk+w0xdnt8hN1rPhtaDyLC9TS0HZ6AM04fcNE1zSVwVlHB
       eGXztmuDnPpS3y+/1ErF7NMB8T4yBv3hzREvv544CquuLYROtmRv9lBbp7l8GqHUPJSLvc
-      kU7+i75JFY4z2xAAAAF21pbnNlb0BtYWMtbWluc2VvLmxvY2FsAQID-----END OPENSSH PRIVATE KEY----- | tr -d '\r' | ssh-add - > /dev/null
+      kU7+i75JFY4z2xAAAAF21pbnNlb0BtYWMtbWluc2VvLmxvY2FsAQID-----END OPENSSH PRIVATE KEY----- | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - ssh-keyscan -p 22 218.209.10.162 >> ~/.ssh/known_hosts
