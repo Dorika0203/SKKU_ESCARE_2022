@@ -47,7 +47,3 @@ bootWar{
 test {
     useJUnitPlatform()
 }
-
-bootWar {
-    archiveName("app.war")
-}
