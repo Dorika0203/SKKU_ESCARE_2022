@@ -18,13 +18,14 @@ build-job: # This job runs in the build stage, which runs first.
   artifacts:
     paths:
       - ./build/libs/app.war
-before_script:
-  - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+
 build:
   tags:
     - runner
   image: docker:latest
   stage: build
+  before_script:
+    - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
   script:
     - echo hi
     - docker login -u tim0726 -p minseo0726
