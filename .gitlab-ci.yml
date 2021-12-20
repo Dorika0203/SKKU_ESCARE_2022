@@ -30,4 +30,5 @@ build:
     - echo hi
     - docker login -u tim0726 -p minseo0726
     - docker build -t kakaotest:0.1 .
+    - docker push tim0726/kakaotest:0.1
     - docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
