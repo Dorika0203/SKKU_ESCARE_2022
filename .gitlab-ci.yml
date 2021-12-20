@@ -78,3 +78,5 @@ deploy-image:
     - chmod 700 ~/.ssh
     - ssh-keyscan -p 22 218.209.10.162 >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh dorika@218.209.10.162
