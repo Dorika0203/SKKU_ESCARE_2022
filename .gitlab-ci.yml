@@ -1,3 +1,71 @@
+# stages:
+#   - build-job
+#   - build
+#   - deploy
+
+
+# build-job: # This job runs in the build stage, which runs first.
+#   stage: build-job
+#   tags:
+#     - runner
+#   image: openjdk:16
+#   script:
+#     - ./gradlew bootWar
+#   cache:
+#     key: whenever-with-dependencies
+#     paths:
+#       - .gradle/wrapper
+#       - .gradle/caches
+#   artifacts:
+#     paths:
+#       - ./build/libs/app.war
+
+# build:
+#   tags:
+#     - runner
+#   image: docker:latest
+#   stage: build
+#   script:
+#     - echo hi
+#     - docker login -u tim0726 -p minseo0726
+#     - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
+#     - docker push tim0726/kakaotest:0.1
+#     #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
+# deploy-image:
+#   tags:
+#     - runner
+#   stage: deploy
+#   before_script:
+#     - 'which ssh-agent || (apk update && apk add openssh-client)'
+#     - eval $(ssh-agent -s)
+#     - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add -
+#     - mkdir -p ~/.ssh
+#     - chmod 700 ~/.ssh
+#     - ssh-keyscan -p 22 218.209.10.162 >> ~/.ssh/known_hosts
+#     - chmod 644 ~/.ssh/known_hosts
+#   script:
+#     - ssh dorika@218.209.10.162 "docker pull tim0726/kakaotest:0.1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 도열 runner
+
 stages:
   - build-job
   - build
@@ -7,7 +75,7 @@ stages:
 build-job: # This job runs in the build stage, which runs first.
   stage: build-job
   tags:
-    - runner
+    - ubtag
   image: openjdk:16
   script:
     - ./gradlew bootWar
@@ -22,18 +90,18 @@ build-job: # This job runs in the build stage, which runs first.
 
 build:
   tags:
-    - runner
+    - ubtag
   image: docker:latest
   stage: build
   script:
     - echo hi
-    - docker login -u tim0726 -p minseo0726
-    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
-    - docker push tim0726/kakaotest:0.1
+    - docker login -u dorika0203 -p rlaehduf15947!
+    - docker build --platform linux/amd64 -t dorika0203/kakaotest:0.1 .
+    - docker push dorika0203/kakaotest:0.1
     #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
 deploy-image:
   tags:
-    - runner
+    - ubtag
   stage: deploy
   before_script:
     - 'which ssh-agent || (apk update && apk add openssh-client)'
@@ -44,5 +112,5 @@ deploy-image:
     - ssh-keyscan -p 22 218.209.10.162 >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh dorika@218.209.10.162 "docker pull tim0726/kakaotest:0.1"
+    - ssh dorika@218.209.10.162 "docker pull dorika0203/kakaotest:0.1"
 
