@@ -45,7 +45,8 @@ deploy-image:
     - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    -> { ssh dorika@$PROD_SERVER_IP
+    ->
+    { ssh dorika@$PROD_SERVER_IP
     "docker pull tim0726/kakaotest:0.1 &&
     docker stop kakaotest &&
     docker rm kakaotest &&
