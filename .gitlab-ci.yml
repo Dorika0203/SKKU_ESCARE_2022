@@ -49,7 +49,9 @@ deploy-image:
       {
       ssh dorika@$PROD_SERVER_IP "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
       } || {
-      echo error in deploy step
+      ssh dorika@$PROD_SERVER_IP "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+      } || {
+      ssh dorika@$PROD_SERVER_IP "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
       }
 
 
