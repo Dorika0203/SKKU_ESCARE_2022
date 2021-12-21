@@ -45,5 +45,5 @@ deploy-image:
     - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh dorika@218.209.10.162 "docker pull tim0726/kakaotest:0.1 && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+    - ssh dorika@218.209.10.162 "docker pull tim0726/kakaotest:0.1 && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
 
