@@ -4,59 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="added jenkinsfile">
-      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="modified Database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bootWarMainClassName" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/KakaoTestApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/DataShareBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/Initializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/SessionAttribute.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/SessionControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/mail/MailDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/mail/MailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/temp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Home.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Timetest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/JobConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/chunkorientedtask/FortanixAuthTasklet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/chunkorientedtask/UUIDItemProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/chunkorientedtask/UUIDItemWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/AdminModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/GroupUUIDModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/GroupsCheckedTimeModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/User2EmailModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/User2KeyModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/UserDataModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/AdminRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/GroupUUIDModelRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/GroupsCheckedTimeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/User2EmailDataRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/User2KeyDataRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/UserDataRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/app.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/test.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/check-animation.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/home_page_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo-lg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo-md.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo-only.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/warning-animation.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootWar/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/job/JobConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/job/JobConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/job/chunkorientedtask/UUIDItemProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/job/chunkorientedtask/UUIDItemProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/job/chunkorientedtask/UUIDItemWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/job/chunkorientedtask/UUIDItemWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/Group2Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/Group2Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/GroupUUID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/GroupUUID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/User2Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/User2Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/model/UserInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,10 +36,17 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="jenkins" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -98,6 +61,9 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="22DN7Kbux8xIUSFWXU1IdI0zQ7q" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -112,6 +78,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="IntegrationPerformanceTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -120,6 +88,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.kakaotest.repository" />
     </key>
   </component>
   <component name="RunManager">
@@ -145,7 +116,6 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="028fb778-acf9-424f-8507-fb3bfbf230d4" name="Default Changelist" comment="" />
       <created>1639368030772</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -157,6 +127,8 @@
       <workItem from="1639456085140" duration="373000" />
       <workItem from="1639456583700" duration="3347000" />
       <workItem from="1639459941035" duration="2190000" />
+      <workItem from="1640053973999" duration="13466000" />
+      <workItem from="1640133329801" duration="5039000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>
@@ -179,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639548004971</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modified Database">
+      <created>1640066345953</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640066345953</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +179,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="docker working well" />
     <MESSAGE value="added jenkinsfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="added jenkinsfile" />
+    <MESSAGE value="modified Database" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified Database" />
   </component>
 </project>
