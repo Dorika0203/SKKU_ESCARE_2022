@@ -1,49 +1,58 @@
-#stages:
-#  - build-job
-#  - build
-#  - deploy
-#variables:
-#  IMAGE_NAME: tim0726/kakaotest:0.1
-#
-#build-job: # This job runs in the build stage, which runs first.
-#  stage: build-job
-#  tags:
-#    - runner
-#  image: openjdk:16
-#  script:
-#    - ./gradlew bootWar
-#  cache:
-#    key: whenever-with-dependencies
-#    paths:
-#      - .gradle/wrapper
-#      - .gradle/caches
-#  artifacts:
-#    paths:
-#      - ./build/libs/app.war
-#
-#build:
-#  tags:
-#    - runner
-#  image: docker:latest
-#  stage: build
-#  script:
-#    - echo hi
-#    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
-#    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
-#    - docker push tim0726/kakaotest:0.1
-#    #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
-#deploy-image:
-#  tags:
-#    - runner
-#  stage: deploy
-#  before_script:
-#    - 'which ssh-agent || (apk update && apk add openssh-client)'
-#    - eval $(ssh-agent -s)
-#    - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add -
-#    - mkdir -p ~/.ssh
-#    - chmod 700 ~/.ssh
-#    - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
-#    - chmod 644 ~/.ssh/known_hosts
-#  script:
-#    - ssh dorika@218.209.10.162 "docker pull tim0726/kakaotest:0.1 && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#
+stages:
+  - build-job
+  - build
+  - deploy
+variables:
+  IMAGE_NAME: tim0726/kakaotest:0.1
+
+build-job: # This job runs in the build stage, which runs first.
+  stage: build-job
+  tags:
+    - runner
+  image: openjdk:16
+  script:
+    - ./gradlew bootWar
+  cache:
+    key: whenever-with-dependencies
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  artifacts:
+    paths:
+      - ./build/libs/app.war
+
+build:
+  tags:
+    - runner
+  image: docker:latest
+  stage: build
+  script:
+    - echo hi
+    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
+    - docker push tim0726/kakaotest:0.1
+    #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
+deploy-image:
+  tags:
+    - runner
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || (apk update && apk add openssh-client)'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - |
+      {
+      ssh dorika@$PROD_SERVER_IP "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+      } || {
+      ssh dorika@$PROD_SERVER_IP "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+      } || {
+      ssh dorika@$PROD_SERVER_IP "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+      }
+
+
+
