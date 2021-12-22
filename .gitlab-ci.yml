@@ -44,14 +44,14 @@ deploy-dev:
     - dev
   stage: deploy
 
-#  before_script:
-#    - 'which ssh-agent || (apk update && apk add openssh-client)'
-#    - eval $(ssh-agent -s)
-#    - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
-#    - mkdir -p ~/.ssh
-#    - chmod 700 ~/.ssh
-#    - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
-#    - chmod 644 ~/.ssh/known_hosts
+  before_script:
+    - 'which ssh-agent || (apk update && apk add openssh-client)'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
 #  script:
 #    - |
 #      {
@@ -63,7 +63,7 @@ deploy-dev:
 #      }
   script:
     - ssh dorika@218.209.10.162
-    - echo rlaehduf15947
+    - ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT
     - echo hello
 
 
