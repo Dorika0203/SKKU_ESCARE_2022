@@ -62,8 +62,8 @@ deploy-dev:
 #      ssh dorika@$DEV_SERVER_IP "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
 #      }
   script:
-    - echo rlaehduf15947 | ssh -t -t dorika@218.209.10.162
-    - echo hi
+    - ssh dorika@218.209.10.162
+    - echo rlaehduf15947
     - echo hello
 
 
