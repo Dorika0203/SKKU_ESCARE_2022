@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="test yml keyword &quot;only&quot;">
+    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="test">
       <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -122,7 +122,7 @@
       <workItem from="1639456583700" duration="3347000" />
       <workItem from="1639459941035" duration="2190000" />
       <workItem from="1640053973999" duration="13466000" />
-      <workItem from="1640133329801" duration="17398000" />
+      <workItem from="1640133329801" duration="18037000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>
@@ -180,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640160357003</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="test">
+      <created>1640161158873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1640161158873</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +212,7 @@
     <MESSAGE value="modified simpleJob" />
     <MESSAGE value="merge main" />
     <MESSAGE value="test yml keyword &quot;only&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="test yml keyword &quot;only&quot;" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>
