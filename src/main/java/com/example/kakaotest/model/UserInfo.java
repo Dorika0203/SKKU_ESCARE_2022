@@ -16,13 +16,4 @@ public class UserInfo {
     // 유저 아이디 (이름 예정)
     @Column
     private String id;
-
-    public UserInfo() {
-        super();
-    }
-    public UserInfo(String id, long userCode)
-    {
-        this.id = id;
-        this.userCode = userCode;
-    }
 }

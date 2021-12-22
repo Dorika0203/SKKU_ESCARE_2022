@@ -19,8 +19,4 @@ public class Group2Email {
     @JoinColumn(name = "GroupUUID_guid")
     @ManyToOne
     private GroupUUID guid;
-
-    public Group2Email() {
-        super();
-    }
 }

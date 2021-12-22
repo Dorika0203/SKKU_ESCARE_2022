@@ -13,6 +13,4 @@ import javax.persistence.Table;
 public class GroupUUID {
     @Id
     private String guid;
-    
-    public GroupUUID() {super();}
 }
