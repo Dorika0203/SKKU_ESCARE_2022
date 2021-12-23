@@ -40,7 +40,7 @@ variables:
 deploy-dev:
   tags:
 #    - runner
-    - ubtest
+    - ubtag
   only:
     - dev
   stage: deploy
