@@ -51,6 +51,8 @@ deploy-dev:
     - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - echo "$QA_SERVER_PORT"
+    - echo "$QA_SERVER_IP"
     - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 #  script:
