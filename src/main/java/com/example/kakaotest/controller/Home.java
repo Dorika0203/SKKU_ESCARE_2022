@@ -126,48 +126,72 @@ public class Home {
     @ResponseBody
     @PostMapping(path="export")
     public int exportRequest(String groupName, String sobjectName) throws ApiException {
-        log.info(groupName + " " + sobjectName);
 
+        //Classes for sending mail
         List<MailDto> mailObjects = new ArrayList();
         MailService mailService = new MailService(javaMailSender);
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("objectname", sobjectName);
-        String jsonString = jsonObject.toString();
-
+        
+        //Verify client to access groups and keys        
         String server = "https://sdkms.fortanix.com";
         String username = "ysoh1205@g.skku.edu";
         String password = "fortanixskku@";
         ApiClient client;
 
         client = generateFortanixSDKMSClientAndVerify(server, username, password);
+        
+        /*
+            Construct plugin input format by JSON object
+            {
+                "objectname" : sobjectName
+            }
+        */
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("objectname", sobjectName);
+        String jsonString = jsonObject.toString();
 
+        //Get group which the key belongs to.
         String groupId = getSecurityObjectByName(client, sobjectName).getGroupId();
         Group group = getGroupsById(client, groupId);
 
+        //Get plugin by using group name : "Key components export for 'group1'"
         String pluginName = "Key components export for " + groupName;
         Plugin plugin = getPluginByName(client, groupId, pluginName);
 
+        //If there is no plugin,
         if(plugin==null){
             return 1;
         }
+        
+        //Get response by String
         String pluginId = plugin.getPluginId();
         String responseStr = invokePlugin(client, pluginId, jsonString);
         System.out.println(responseStr);
+        
+        //If there are no custodians in this group,
         if(responseStr.equals("\"no custodians in this group\"")){
             return 2;
         }
 
+        //Convert response to JSON object
         JSONObject response = new JSONObject(responseStr);
         int custodianNum = ((JSONObject)response.get("custodians")).length();
+        
+        //Get custodians email
         List<String> mails = new ArrayList<>();
         for(int i=0; i<custodianNum; i++) {
+            //Get email by there fortanix sdkms user id
             String userId = ((JSONObject)response.get("custodians")).get("user " + i).toString();
             mails.add(getUserEmail(client, userId));
         }
 
+        //Construct MailDto class variables
         for(int i=0; i<custodianNum; i++) {
             int tmp = i+1;
+            /*
+                format:
+                    Title: Components and KCV of exported Security Object : 'security object name'
+                    Content: 
+            */
             mailObjects.add(new MailDto(
                     mails.get(i),
                     String.format("Components and KCV of exported Security Object : %s",sobjectName),
