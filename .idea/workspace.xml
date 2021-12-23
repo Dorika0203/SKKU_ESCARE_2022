@@ -5,58 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="added jenkinsfile">
-      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/fortanix/FortanixRestApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/component.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bootWarMainClassName" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/KakaoTestApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/DataShareBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/Initializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/SessionAttribute.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/SessionControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/mail/MailDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/mail/MailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/component/temp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Home.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Timetest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/JobConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/chunkorientedtask/FortanixAuthTasklet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/chunkorientedtask/UUIDItemProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/job/chunkorientedtask/UUIDItemWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/AdminModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/GroupUUIDModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/GroupsCheckedTimeModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/User2EmailModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/User2KeyModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/model/UserDataModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/AdminRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/GroupUUIDModelRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/GroupsCheckedTimeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/User2EmailDataRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/User2KeyDataRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/repository/UserDataRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/app.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/test.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/check-animation.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/home_page_img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo-lg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo-md.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo-only.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/logout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/image/warning-animation.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootWar/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,10 +36,19 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="jenkins" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -96,6 +61,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.batch/spring-batch-infrastructure/4.3.3/c53a97bc8d2d3c3939284a0f2e827db366124ddc/spring-batch-infrastructure-4.3.3-sources.jar!/org/springframework/batch/item/file/MultiResourceItemWriter.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="22DN7Kbux8xIUSFWXU1IdI0zQ7q" />
   <component name="ProjectViewState">
@@ -112,24 +80,31 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SKKU_ESCARE_2021" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+  <component name="RunManager" selected="Spring Boot.KakaoTestApplication">
+    <configuration name="FortanixRestApi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.kakaotest.fortanix.FortanixRestApi" />
+      <module name="kakaotest.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.kakaotest.fortanix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,11 +116,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.FortanixRestApi" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="028fb778-acf9-424f-8507-fb3bfbf230d4" name="Default Changelist" comment="" />
+      <changelist id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="added jenkinsfile" />
       <created>1639368030772</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -157,6 +137,12 @@
       <workItem from="1639456085140" duration="373000" />
       <workItem from="1639456583700" duration="3347000" />
       <workItem from="1639459941035" duration="2190000" />
+      <workItem from="1639717624657" duration="3130000" />
+      <workItem from="1639960789313" duration="3511000" />
+      <workItem from="1639965953476" duration="1485000" />
+      <workItem from="1639974131746" duration="12673000" />
+      <workItem from="1640047215988" duration="19207000" />
+      <workItem from="1640133557890" duration="15117000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>

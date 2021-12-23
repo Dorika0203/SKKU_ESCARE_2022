@@ -55,6 +55,7 @@
                 {
                     case 0:
                         alert("success")
+                        location.href = "export"
                         break
                     case 1:
                         alert("id too short")
@@ -68,8 +69,9 @@
                     case 4:
                         alert("PW is wrong")
                         break
+                    default:
+                        location.reload()
                 }
-                location.reload();
             },
             error:function(request,status,error) {
                 location.replace("/error")
