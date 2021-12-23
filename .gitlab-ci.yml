@@ -39,7 +39,8 @@ variables:
 # development test server is used in doyeol's private linux server - ubuntu server 20.04
 deploy-dev:
   tags:
-    - runner
+#    - runner
+    - ubtest
   only:
     - dev
   stage: deploy
@@ -51,7 +52,7 @@ deploy-dev:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
 #    - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
-    - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
+#    - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
     - ssh-keyscan -p 6401 221.150.94.24 >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 #  script:
@@ -65,7 +66,7 @@ deploy-dev:
 #      }
   script:
 #    - ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT
-    - ssh escare@$221.150.94.24 -p 6401
+    - ssh escare@$221.150.94.24 -p 6401 "echo hi"
     - echo hello
 
 
