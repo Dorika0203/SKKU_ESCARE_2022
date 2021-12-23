@@ -36,6 +36,7 @@ docker-build-push:
     - docker build -t tim0726/kakaotest:0.1 .
     - docker push tim0726/kakaotest:0.1
 #    docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
+# asdf
 
 
 
