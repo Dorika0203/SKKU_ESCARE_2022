@@ -5,37 +5,37 @@ stages:
 variables:
   IMAGE_NAME: tim0726/kakaotest:0.1
 
-#
-#build-job:
-#  stage: build-job
-#  tags:
-##    - runner
-#    - ubtag
-#  image: openjdk:16
-#  script:
-#    - ./gradlew bootWar
-#  cache:
-#    key: whenever-with-dependencies
-#    paths:
-#      - .gradle/wrapper
-#      - .gradle/caches
-#  artifacts:
-#    paths:
-#      - ./build/libs/app.war
-#
-#docker-build-push:
-#  tags:
-##    - runner
-#    - ubtag
-#  image: docker:latest
-#  stage: build
-#  script:
-#    - echo hi
-#    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
-##    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
-#    - docker build -t tim0726/kakaotest:0.1 .
-#    - docker push tim0726/kakaotest:0.1
-##    docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
+
+build-job:
+  stage: build-job
+  tags:
+#    - runner
+    - ubtag
+  image: openjdk:16
+  script:
+    - ./gradlew bootWar
+  cache:
+    key: whenever-with-dependencies
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  artifacts:
+    paths:
+      - ./build/libs/app.war
+
+docker-build-push:
+  tags:
+#    - runner
+    - ubtag
+  image: docker:latest
+  stage: build
+  script:
+    - echo hi
+    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+#    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
+    - docker build -t tim0726/kakaotest:0.1 .
+    - docker push tim0726/kakaotest:0.1
+#    docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
 
 
 
