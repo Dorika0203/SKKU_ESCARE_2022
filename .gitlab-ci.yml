@@ -6,39 +6,44 @@ variables:
   IMAGE_NAME: tim0726/kakaotest:0.1
 
 
-#build-job:
-#  stage: build-job
-#  tags:
+build-job:
+  stage: build-job
+  tags:
 #    - runner
-#  image: openjdk:16
-#  script:
-#    - ./gradlew bootWar
-#  cache:
-#    key: whenever-with-dependencies
-#    paths:
-#      - .gradle/wrapper
-#      - .gradle/caches
-#  artifacts:
-#    paths:
-#      - ./build/libs/app.war
-#
-#docker-build-push:
-#  tags:
+    - ubtag
+  image: openjdk:16
+  script:
+    - ./gradlew bootWar
+  cache:
+    key: whenever-with-dependencies
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  artifacts:
+    paths:
+      - ./build/libs/app.war
+
+docker-build-push:
+  tags:
 #    - runner
-#  image: docker:latest
-#  stage: build
-#  script:
-#    - echo hi
-#    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+    - ubtag
+  image: docker:latest
+  stage: build
+  script:
+    - echo hi
+    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
 #    - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
-#    - docker push tim0726/kakaotest:0.1
-#    #docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
+    - docker build -t tim0726/kakaotest:0.1 .
+    - docker push tim0726/kakaotest:0.1
+#    docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
 
 
 
-# development test server is used in doyeol's private linux server - ubuntu server 20.04
+# ---------------------------------------------------------------------------------------- deployment -------------------------------------------------------------------- #
 
-deploy-dev:
+# This is deploying for DEVELOPMENT process, for testing.
+# Using server is contributor dorika's personal server -- ubuntu 20.04 server.
+deploy-DEV:
   tags:
 #    - runner
     - ubtag
@@ -66,10 +71,16 @@ deploy-dev:
 #      }
 
 
-# QA server is used in ESCARE server (CentOS 7)
+
+
+
+# This is deploying for QA process, for testing.
+# Using server is ESCARE server -- CentOS 7 server.
+# Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-QA:
   tags:
-    - runner
+#    - runner
+    - ubtag
   only:
     - QA
   stage: deploy
@@ -79,15 +90,47 @@ deploy-QA:
     - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
+#    - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
+    - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - |
-      {
-      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-      } || {
-      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-      } || {
-      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-      }
+    - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
+#    - |
+#      {
+#      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+#      } || {
+#      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+#      } || {
+#      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+#      }
 
+
+# This is deploying for PRODUCTION process, for testing.
+# Using server is ESCARE server -- Ubuntu 20.04 server
+# Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
+deploy-PROD:
+  tags:
+    #    - runner
+    - ubtag
+  only:
+    - main
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || (apk update && apk add openssh-client)'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    #    - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
+    - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
+#    - |
+#      {
+#      ssh {ID}@$PROD_SERVER_IP -p $PROD_SERVER_PORT "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+#      } || {
+#      ssh {ID}@$PROD_SERVER_IP -p $PROD_SERVER_PORT "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+#      } || {
+#      ssh {ID}@$PROD_SERVER_IP -p $PROD_SERVER_PORT "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
+#      }
