@@ -190,7 +190,11 @@ public class Home {
             /*
                 format:
                     Title: Components and KCV of exported Security Object : 'security object name'
-                    Content: 
+                    Content: main KCV : 538E7B,
+                             component 1 : {
+                                  component: E68F4799728F67AA,
+                                  kcv: C21F10
+                             }
             */
             mailObjects.add(new MailDto(
                     mails.get(i),
@@ -203,11 +207,11 @@ public class Home {
             ));
         }
 
+        //Sending mails to custodians
         for(int i=0; i<custodianNum; i++) {
             mailService.mailSend(mailObjects.get(i));
         }
 
-        System.out.printf("%s\n", mails);
         return 0;
     }
 
