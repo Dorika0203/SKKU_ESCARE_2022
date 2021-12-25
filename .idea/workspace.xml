@@ -7,7 +7,6 @@
     <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="DB localhost test">
       <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,8 @@
       <workItem from="1639456583700" duration="3347000" />
       <workItem from="1639459941035" duration="2190000" />
       <workItem from="1640053973999" duration="13466000" />
-      <workItem from="1640133329801" duration="30832000" />
+      <workItem from="1640133329801" duration="33318000" />
+      <workItem from="1640414912756" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>
@@ -300,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640238879044</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="DB localhost test">
+      <created>1640239015265</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1640239015265</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
