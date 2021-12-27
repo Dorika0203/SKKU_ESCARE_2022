@@ -50,9 +50,9 @@
                     <div class="page-title-wrapper">
                         <div class="page-title-heading">
                             <div>
-                                welcome
+                                <h2><b>Key Component Export</b></h2>
                                 <div class="page-title-subheading">
-                                    hi
+                                    Fortanix SDKMS 내 추출 가능한 키를 분할하여 지정된 Custodian 에게 이메일을 전송합니다.
                                 </div>
                             </div>
                         </div>
@@ -70,8 +70,10 @@
 										card-header-tab
 										card-header-tab-animation
 										card-header">
-                                        <div class="card-header-title">| Export</div>
+                                        <div class="card-header-title">분할 추출 하고자 하는 키를 선택하고, 추출 버튼을 클릭합니다. 그룹을 먼저 선택하면 해당 그룹 내 키 목록을 볼 수 있습니다.</div>
                                     </div>
+                                    <div style="color:red;padding-left: 20px;"><br>"Export" Key Operation permission 이 부여되지 않은 키는 목록에 나타나지 않습니다.</div>
+                                    <div style="color:red;padding-left: 20px;"><br>추출된 Key Component 는 새당 그룹에 설정된 Custodian 정책에 따라 이메일로 발송됩니다.</div>
                                     <form>
                                         <div class="card-body">
                                             <div class="input-group">

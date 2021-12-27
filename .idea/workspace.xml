@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="added jenkinsfile">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/fortanix/FortanixRestApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/component.jsp" afterDir="false" />
+    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="key components export">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/component.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/component.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +137,11 @@
       <workItem from="1639974131746" duration="12673000" />
       <workItem from="1640047215988" duration="19207000" />
       <workItem from="1640133557890" duration="15117000" />
+      <workItem from="1640221614081" duration="218000" />
+      <workItem from="1640232121056" duration="421000" />
+      <workItem from="1640233044591" duration="206000" />
+      <workItem from="1640244769954" duration="633000" />
+      <workItem from="1640567106502" duration="1395000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>
@@ -165,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639548004971</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="key components export">
+      <created>1640221760763</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640221760763</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +192,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="docker working well" />
     <MESSAGE value="added jenkinsfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="added jenkinsfile" />
+    <MESSAGE value="key components export" />
+    <option name="LAST_COMMIT_MESSAGE" value="key components export" />
   </component>
 </project>
