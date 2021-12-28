@@ -55,7 +55,7 @@
                 {
                     case 0:
                         alert("success")
-                        location.href = "export"
+                        location.href = "group"
                         break
                     case 1:
                         alert("id too short")
