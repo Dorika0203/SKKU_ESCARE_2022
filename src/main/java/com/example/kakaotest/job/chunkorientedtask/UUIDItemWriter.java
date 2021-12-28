@@ -11,6 +11,24 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+//public class UUIDItemWriter implements ItemWriter<List<MailDto>> {
+//
+//    private MailService mailService;
+//
+//    @Override
+//    public void write(List<? extends List<MailDto>> items) throws Exception {
+//        items.get(0).forEach((mailObject) -> {
+//            System.out.println(mailObject.getAddress());
+//            mailService.mailSend(mailObject);
+//        });
+//    }
+//
+//    @Autowired
+//    public UUIDItemWriter(MailService mailService) {
+//        this.mailService = mailService;
+//    }
+//}
+
 public class UUIDItemWriter implements ItemWriter<List<MailDto>> {
 
     private MailService mailService;
