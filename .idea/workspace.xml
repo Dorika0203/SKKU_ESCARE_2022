@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="create group.jsp">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/rekeyResult.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/fortanix/FortanixRestApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/fortanix/FortanixRestApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/fortanix/FortanixRestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/fortanix/FortanixRestApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
