@@ -215,6 +215,31 @@ public class Home {
         return 0;
     }
 
+    @GetMapping(path="group")
+    public String group(){
+        return "group";
+    }
+
+
+    @GetMapping(path="/rekey")
+    public String rekey(String groupName, String sobjectName, Model model) throws ApiException {
+        //Verify client to access groups and keys
+        String server = "https://sdkms.fortanix.com";
+        String username = "ysoh1205@g.skku.edu";
+        String password = "fortanixskku@";
+        ApiClient client;
+
+        client = generateFortanixSDKMSClientAndVerify(server, username, password);
+
+        KeyObject sobject = getSecurityObjectByName(client, sobjectName);
+        System.out.println(sobject.getState().getValue());
+
+        KeyObject keyObject = rotateKey(client, sobject);
+
+        model.addAttribute("result", keyObject.toString());
+        return "rekeyResult";
+    }
+
 //    @RequestMapping(path = "/signup", method = RequestMethod.GET)
 //    public String signup()
 //    {
