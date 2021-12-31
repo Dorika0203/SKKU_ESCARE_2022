@@ -41,6 +41,15 @@
                 </div>
             </div>
         </div>
+        <div class="app-header__content">
+            <div class="app-header-left">
+                <div class="widget-content p-0">
+                    <div class="widget-content-wrapper">
+                        <a href="group"> | group </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="app-main">

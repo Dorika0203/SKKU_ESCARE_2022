@@ -217,6 +217,7 @@ public class Home {
 
     @GetMapping(path="group")
     public String group(){
+
         return "group";
     }
 
@@ -234,7 +235,12 @@ public class Home {
         KeyObject sobject = getSecurityObjectByName(client, sobjectName);
         System.out.println(sobject.getState().getValue());
 
-        KeyObject keyObject = rotateKey(client, sobject);
+        KeyObject keyObject;
+        if(sobject.getState().getValue().equals("Deactivated")){
+            keyObject = rotateKey(client, sobject);
+        }else{
+            keyObject = sobject;
+        }
 
         model.addAttribute("result", keyObject.toString());
         return "rekeyResult";

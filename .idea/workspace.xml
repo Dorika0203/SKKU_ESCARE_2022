@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="create group.jsp">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+    <list default="true" id="71c75c16-d93d-4348-9d03-dde525552e68" name="Default Changelist" comment="edit group.jsp and rekey rest api">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/kakaotest/controller/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kakaotest/controller/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/component.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/component.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +145,8 @@
       <workItem from="1640663687586" duration="2038000" />
       <workItem from="1640754052557" duration="5887000" />
       <workItem from="1640839604710" duration="985000" />
+      <workItem from="1640923666871" duration="3000" />
+      <workItem from="1640928532854" duration="1472000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>
