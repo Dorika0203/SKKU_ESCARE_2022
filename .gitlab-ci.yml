@@ -61,7 +61,7 @@ deploy-DEV:
     - chmod 644 ~/.ssh/known_hosts
   script:
     # - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
-    - ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh &"
+    - ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh"
 
 
 
