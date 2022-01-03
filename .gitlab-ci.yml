@@ -10,7 +10,7 @@ build-job:
   stage: build-job
   tags:
     - ubtag
-  # image: openjdk:11
+  image: openjdk:11
   script:
     - ./gradlew bootWar
   cache:
