@@ -62,6 +62,8 @@ deploy-DEV:
   script:
     # - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
     - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh" &
+    - ps -ef | grep kubetest
+    - echo "HI"
 
 
 
