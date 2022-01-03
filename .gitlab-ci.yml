@@ -6,32 +6,32 @@ variables:
   IMAGE_NAME: tim0726/kakaotest:0.1
 
 
-build-job:
-  stage: build-job
-  tags:
-    - ubtag
-  image: openjdk:11
-  script:
-    - ./gradlew bootWar
-  cache:
-    key: whenever-with-dependencies
-    paths:
-      - .gradle/wrapper
-      - .gradle/caches
-  artifacts:
-    paths:
-      - ./build/libs/app.war
+# build-job:
+#   stage: build-job
+#   tags:
+#     - ubtag
+#   image: openjdk:11
+#   script:
+#     - ./gradlew bootWar
+#   cache:
+#     key: whenever-with-dependencies
+#     paths:
+#       - .gradle/wrapper
+#       - .gradle/caches
+#   artifacts:
+#     paths:
+#       - ./build/libs/app.war
 
-docker-build-push:
-  tags:
-    - ubtag
-  image: docker:latest
-  stage: build
-  script:
-    - echo hi
-    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
-    - docker build -t tim0726/kakaotest:0.1 .
-    - docker push tim0726/kakaotest:0.1
+# docker-build-push:
+#   tags:
+#     - ubtag
+#   image: docker:latest
+#   stage: build
+#   script:
+#     - echo hi
+#     - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+#     - docker build -t tim0726/kakaotest:0.1 .
+#     - docker push tim0726/kakaotest:0.1
 
 
 
