@@ -64,6 +64,8 @@ deploy-DEV:
     - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh" &
     - ps -ef | grep kubetest
     - echo "HI"
+    - sleep 10s
+    - ls
 
 
 
