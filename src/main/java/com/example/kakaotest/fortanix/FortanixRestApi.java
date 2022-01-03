@@ -99,4 +99,12 @@ public class FortanixRestApi {
         String email = user.getUserEmail();
         return email;
     }
+
+    public static KeyObject rotateKey(ApiClient client, KeyObject target) throws ApiException {
+        SecurityObjectsApi securityObjectsApi = new SecurityObjectsApi(client);
+        SobjectRequest sobjectRequest = new SobjectRequest().name(target.getName()).keyOps(target.getKeyOps());
+        KeyObject keyObject;
+        keyObject = securityObjectsApi.rotateSecurityObject(sobjectRequest);
+        return keyObject;
+    }
 }

@@ -34,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -150,6 +151,10 @@
       <workItem from="1640133329801" duration="33318000" />
       <workItem from="1640414912756" duration="30000" />
       <workItem from="1640663687586" duration="2038000" />
+      <workItem from="1640754052557" duration="5887000" />
+      <workItem from="1640839604710" duration="985000" />
+      <workItem from="1640923666871" duration="3000" />
+      <workItem from="1640928532854" duration="1472000" />
     </task>
     <task id="LOCAL-00001" summary="docker working well">
       <created>1639458404545</created>
