@@ -6,36 +6,32 @@ variables:
   IMAGE_NAME: tim0726/kakaotest:0.1
 
 
-# build-job:
-#   stage: build-job
-#   tags:
-# #    - runner
-#     - ubtag
-#   image: openjdk:11
-#   script:
-#     - ./gradlew bootWar
-#   cache:
-#     key: whenever-with-dependencies
-#     paths:
-#       - .gradle/wrapper
-#       - .gradle/caches
-#   artifacts:
-#     paths:
-#       - ./build/libs/app.war
+build-job:
+  stage: build-job
+  tags:
+    - ubtag
+  # image: openjdk:11
+  script:
+    - ./gradlew bootWar
+  cache:
+    key: whenever-with-dependencies
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  artifacts:
+    paths:
+      - ./build/libs/app.war
 
-# docker-build-push:
-#   tags:
-# #    - runner
-#     - ubtag
-#   image: docker:latest
-#   stage: build
-#   script:
-#     - echo hi
-#     - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
-#     - docker build --platform linux/amd64 -t tim0726/kakaotest:0.1 .
-# #    - docker build -t tim0726/kakaotest:0.1 .
-#     - docker push tim0726/kakaotest:0.1
-# #    docker run --name kakaotest -p 8080:8080 --link mariadb kakaotest:0.1
+docker-build-push:
+  tags:
+    - ubtag
+  image: docker:latest
+  stage: build
+  script:
+    - echo hi
+    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+    - docker build -t tim0726/kakaotest:0.1 .
+    - docker push tim0726/kakaotest:0.1
 
 
 
@@ -45,12 +41,10 @@ variables:
 # Using server is contributor dorika's personal server -- ubuntu 20.04 server.
 deploy-DEV:
   tags:
-#    - runner
     - ubtag
   only:
     - dev
   stage: deploy
-
   before_script:
     - 'which ssh-agent || (apk update && apk add openssh-client)'
     - eval $(ssh-agent -s)
@@ -61,7 +55,8 @@ deploy-DEV:
     - chmod 644 ~/.ssh/known_hosts
   script:
     # - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
-    - nohup --version
+    - ls /
+    - ls /bin
     - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &" &
     - sleep 60s
 
@@ -74,7 +69,6 @@ deploy-DEV:
 # Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-QA:
   tags:
-#    - runner
     - ubtag
   only:
     - QA
@@ -90,14 +84,6 @@ deploy-QA:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
-#    - |
-#      {
-#      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#      } || {
-#      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#      } || {
-#      ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#      }
 
 
 # This is deploying for PRODUCTION process, for testing.
@@ -105,7 +91,6 @@ deploy-QA:
 # Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-PROD:
   tags:
-    #    - runner
     - ubtag
   only:
     - main
@@ -121,11 +106,3 @@ deploy-PROD:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh dorika@$DEV_SERVER_IP "./escare/test.sh $DB_URL $DB_USERNAME $DB_PASSWORD $MAIL_USERNAME $MAIL_PASSWORD"
-#    - |
-#      {
-#      ssh {ID}@$PROD_SERVER_IP -p $PROD_SERVER_PORT "docker pull tim0726/kakaotest:0.1 && docker stop kakaotest && docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#      } || {
-#      ssh {ID}@$PROD_SERVER_IP -p $PROD_SERVER_PORT "docker rm kakaotest && docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#      } || {
-#      ssh {ID}@$PROD_SERVER_IP -p $PROD_SERVER_PORT "docker run -d -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e MAIL_USERNAME=$MAIL_USERNAME -e MAIL_PASSWORD=$MAIL_PASSWORD --name kakaotest -p 8080:8080 --link mariadb tim0726/kakaotest:0.1 && exit"
-#      }
