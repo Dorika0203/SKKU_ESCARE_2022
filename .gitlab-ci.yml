@@ -11,7 +11,7 @@ build-job:
   tags:
 #    - runner
     - ubtag
-  image: openjdk:16
+  image: openjdk:11
   script:
     - ./gradlew bootWar
   cache:
