@@ -3,6 +3,7 @@ package com.example.kakaotest.controller;
 
 import com.example.kakaotest.component.SessionAttribute;
 
+import com.example.kakaotest.component.mail.ExternalEnv;
 import com.example.kakaotest.component.mail.MailDto;
 import com.example.kakaotest.component.mail.MailService;
 import com.example.kakaotest.model.AdminModel;
@@ -22,6 +23,7 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 
@@ -46,13 +48,11 @@ public class Home {
     private final JobLauncher jobLauncher;
     private final Job job;
     private final JavaMailSender javaMailSender;
-    @Value("${spring.datasource.url}")
-    private String testVal;
+    private final ExternalEnv env;
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     public String login()
     {
-        System.out.println("--test--\n"+testVal);
         return "login";
     }
 
