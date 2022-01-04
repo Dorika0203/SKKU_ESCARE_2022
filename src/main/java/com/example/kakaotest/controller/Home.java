@@ -21,6 +21,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 
@@ -45,10 +46,13 @@ public class Home {
     private final JobLauncher jobLauncher;
     private final Job job;
     private final JavaMailSender javaMailSender;
+    @Value("${spring.datasource.url}")
+    private String testVal;
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     public String login()
     {
+        System.out.println("--test--\n"+testVal);
         return "login";
     }
 
