@@ -58,7 +58,7 @@ deploy-DEV:
   script:
     - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh" &
     # - ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh"
-    # - sleep 40s
+    - sleep 40s
 
 
 
