@@ -57,12 +57,8 @@ deploy-DEV:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - nohup --version
-    - ssh dorika@$DEV_SERVER_IP
-    - cd kubetest
-    - nohup ./kuber.sh &
-    - exit
-    # - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &" &
-    # - sleep 30s
+    - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &" &
+    - sleep 120s
 
 
 
