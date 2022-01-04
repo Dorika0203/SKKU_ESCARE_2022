@@ -45,6 +45,7 @@ deploy-DEV:
   only:
     - dev
   stage: deploy
+  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apk update && apk add openssh-client)'
     - eval $(ssh-agent -s)
@@ -54,7 +55,6 @@ deploy-DEV:
     - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - nohup
     - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh" &
     - sleep 60s
 
