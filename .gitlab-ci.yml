@@ -56,9 +56,9 @@ deploy-DEV:
     - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &" &
+    - nohup ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh" &
     # - ssh dorika@$DEV_SERVER_IP "cd kubetest && ./kuber.sh"
-    - sleep 40s
+    # - sleep 40s
 
 
 
