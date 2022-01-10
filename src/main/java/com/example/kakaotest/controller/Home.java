@@ -355,18 +355,13 @@ public class Home {
     public int g2eAdd(String group, String email, HttpSession session) {
         if(!SessionAttribute.isSessionAvailable(session)) return 4;
 
-        System.out.println(group);
-        System.out.println(email);
         Optional<GroupUUID> found1 = groupUUIDRepo.findByGuid(group);
         if(found1.isEmpty()) return 1;
 
         Optional<User2Email> found2 = user2EmailRepo.findById(email);
         if(found2.isEmpty()) return 2;
 
-        Group2EmailPK findKey = new Group2EmailPK();
-        findKey.setEmail(email);
-        findKey.setGuid(found1.get().getGuid());
-        Optional<Group2Email> found3 = group2EmailRepo.findById(findKey);
+        Optional<Group2Email> found3 = group2EmailRepo.findByEmailAndGuid(found2.get(), found1.get());
         if(found3.isPresent()) return 3;
 
         Group2Email newG2E = new Group2Email();
@@ -382,19 +377,14 @@ public class Home {
     public int g2eDelete(String group, String email, HttpSession session) {
         if(!SessionAttribute.isSessionAvailable(session)) return 4;
 
-        System.out.println(group);
-        System.out.println(email);
         Optional<GroupUUID> found1 = groupUUIDRepo.findByGuid(group);
         if(found1.isEmpty()) return 1;
 
         Optional<User2Email> found2 = user2EmailRepo.findById(email);
         if(found2.isEmpty()) return 2;
 
-        Group2EmailPK findKey = new Group2EmailPK();
-        findKey.setEmail(email);
-        findKey.setGuid(found1.get().getGuid());
-        Optional<Group2Email> found3 = group2EmailRepo.findById(findKey);
-        if(found3.isPresent()) return 3;
+        Optional<Group2Email> found3 = group2EmailRepo.findByEmailAndGuid(found2.get(), found1.get());
+        if(found3.isEmpty()) return 3;
 
         Group2Email newG2E = new Group2Email();
         newG2E.setGuid(found1.get());
@@ -456,8 +446,13 @@ public class Home {
             jobLauncher.run(simpleJob, jobParameters);
         } catch (Exception e) {
             log.info(e.getMessage());
+            return "redirect:/error";
         }
+        return "testPage";
+    }
 
+    @GetMapping("/launchjob2")
+    public String launchJob2() throws Exception {
         try {
             JobParameters jobParameters = new JobParametersBuilder()
                     .addDate("date", new Date())
@@ -465,6 +460,7 @@ public class Home {
             jobLauncher.run(updateGroupJob, jobParameters);
         } catch (Exception e) {
             log.info(e.getMessage());
+            return "redirect:/error";
         }
         return "testPage";
     }

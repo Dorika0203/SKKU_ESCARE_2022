@@ -59,7 +59,7 @@
                         <div class="page-title-heading">
                             <div>
                                 <h2><b>설정 화면</b></h2>
-                                <button id="GROUP_UPDATE">그룹 리스트 업데이트</button>
+                                <button id="GROUP_UPDATE" class="btn btn-outline-secondary">그룹 리스트 업데이트</button>
                                 <div class="page-title-subheading">
                                     1. 그룹에 알림 이메일 설정 (추가, 제거)
                                     <p></p>
