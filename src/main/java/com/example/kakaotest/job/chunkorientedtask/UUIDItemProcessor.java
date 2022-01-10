@@ -3,7 +3,6 @@ package com.example.kakaotest.job.chunkorientedtask;
 import com.example.kakaotest.component.mail.ExternalEnv;
 import com.example.kakaotest.component.mail.MailDto;
 import com.example.kakaotest.model.Group2Email;
-import com.example.kakaotest.model.GroupUUIDModel;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -12,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -32,9 +32,10 @@ public class UUIDItemProcessor implements ItemProcessor<Group2Email, List<MailDt
     public List<MailDto> process(Group2Email uuid) throws Exception {
 
         List<MailDto> mailObjects = new ArrayList();
+//        System.out.println(uuid.getEmail());
+//        System.out.println(uuid.getGuid());
 
         //bearer token get
-
         Unirest.setTimeouts(0, 0);
         HttpResponse<JsonNode> BearerTokenResponse = Unirest.post("https://sdkms.fortanix.com/sys/v1/session/auth")
                 .header("Authorization", "Basic " + env.getApiKey())
@@ -44,18 +45,11 @@ public class UUIDItemProcessor implements ItemProcessor<Group2Email, List<MailDt
 
         // Get Keys from corresponding group
         Unirest.setTimeouts(0, 0);
-        HttpResponse<JsonNode> keyObjectsResponse1 = Unirest.get("https://sdkms.fortanix.com/crypto/v1/keys?group_id=" + uuid.getGuid().getGuid())
-                .header("Authorization", "Bearer " + accessToken)
-                .asJson();
-        System.out.println(uuid.getGuid().getGuid());
-        System.out.println(keyObjectsResponse1.getBody());
-
-
-        // Get Keys from corresponding group
-        Unirest.setTimeouts(0, 0);
         HttpResponse<JsonNode> keyObjectsResponse = Unirest.get("https://sdkms.fortanix.com/crypto/v1/keys?group_id=" + uuid.getGuid().getGuid())
                 .header("Authorization", "Bearer " + accessToken)
                 .asJson();
+        System.out.println(uuid.getGuid().getGuid());
+        System.out.println(keyObjectsResponse.getBody());
         JSONArray keyObjectArray = keyObjectsResponse.getBody().getArray();
 
 
