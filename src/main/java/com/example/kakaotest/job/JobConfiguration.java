@@ -104,7 +104,6 @@ public class JobConfiguration {
                 .repository(group2EmailRepo)
                 .methodName("findAll")
                 .pageSize(1)
-                .maxItemCount(1)
                 .sorts(Collections.singletonMap("guid", Sort.Direction.ASC))
                 .name("repositoryItemReader")
                 .build();

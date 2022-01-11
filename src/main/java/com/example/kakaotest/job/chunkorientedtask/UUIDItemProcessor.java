@@ -82,7 +82,7 @@ public class UUIDItemProcessor implements ItemProcessor<Group2Email, List<MailDt
                     ));
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
 
