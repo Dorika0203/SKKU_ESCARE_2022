@@ -71,7 +71,7 @@ deploy-QA:
   tags:
     - ubtag
   only:
-    - dev
+    - QA
   stage: deploy
   timeout: 3d
   image: ubuntu:20.04
@@ -97,7 +97,7 @@ deploy-PROD:
   tags:
     - ubtag
   only:
-    - dev
+    - main
   stage: deploy
   timeout: 3d
   image: ubuntu:20.04
