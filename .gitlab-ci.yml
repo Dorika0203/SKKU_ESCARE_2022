@@ -12,7 +12,8 @@ build-job:
  # Tag is identifier to select which gitlab-runner instance to use
  # Current 'ubtag' is gilab runner instance in Dorika's private linux server (ubuntu 20.04 server), running as docker container.
  tags:
-   - ubtag
+#   - ubtag
+   - escare
  image: openjdk:11
  script:
    - ./gradlew bootWar
@@ -25,9 +26,13 @@ build-job:
    paths:
      - ./build/libs/app.war
 
+
+
+
 docker-build-push:
  tags:
-   - ubtag
+#   - ubtag
+   - escare
  image: docker:latest
  stage: build
  script:
@@ -44,7 +49,8 @@ docker-build-push:
 # Using server is contributor dorika's personal server -- ubuntu 20.04 server.
 deploy-DEV:
   tags:
-    - ubtag
+#    - ubtag
+    - escare
   only:
     - dev
   stage: deploy
@@ -69,7 +75,8 @@ deploy-DEV:
 # Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-QA:
   tags:
-    - ubtag
+#    - ubtag
+    - escare
   only:
     - QA
   stage: deploy
@@ -95,7 +102,8 @@ deploy-QA:
 # Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-PROD:
   tags:
-    - ubtag
+#    - ubtag
+    - escare
   only:
     - main
   stage: deploy
