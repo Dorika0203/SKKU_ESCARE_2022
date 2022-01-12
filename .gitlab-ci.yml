@@ -65,7 +65,7 @@ deploy-DEV:
     - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh escare@$DEV_SERVER_IP "cd skku && nohup ./kuber.sh &"
+    - ssh escare@$DEV_SERVER_IP -p $DEV_SERVER_PORT "cd skku && nohup ./kuber.sh &"
 #    - ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &"
 
 
@@ -91,7 +91,7 @@ deploy-QA:
     - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh escare@$QA_SERVER_IP "cd skku && nohup ./kuber.sh &"
+    - ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "cd skku && nohup ./kuber.sh &"
 
 
 
@@ -116,4 +116,4 @@ deploy-PROD:
     - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh escare@$PROD_SERVER_IP "cd skku && nohup ./kuber.sh &"
+    - ssh escare@$PROD_SERVER_IP -p $PROD_SERVER_PORT "cd skku && nohup ./kuber.sh &"
