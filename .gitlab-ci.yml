@@ -55,7 +55,7 @@ deploy-DEV:
     - dev
   stage: deploy
   timeout: 3d
-  image: ubuntu:20.04
+#  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
     - eval $(ssh-agent -s)
@@ -65,7 +65,7 @@ deploy-DEV:
     - ssh-keyscan -p $DEV_SERVER_PORT $DEV_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh escare@$DEV_SERVER_IP -p $DEV_SERVER_PORT "cd skku && nohup ./kuber.sh &"
+    - ssh escare@$DEV_SERVER_IP -p $DEV_SERVER_PORT "cd skku/dev && nohup ./kuber.sh &"
 #    - ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &"
 
 
@@ -81,7 +81,7 @@ deploy-QA:
     - QA
   stage: deploy
   timeout: 3d
-  image: ubuntu:20.04
+#  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
     - eval $(ssh-agent -s)
@@ -91,7 +91,7 @@ deploy-QA:
     - ssh-keyscan -p $QA_SERVER_PORT $QA_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "cd skku && nohup ./kuber.sh &"
+    - ssh escare@$QA_SERVER_IP -p $QA_SERVER_PORT "cd skku/qa && nohup ./kuber.sh &"
 
 
 
@@ -106,7 +106,7 @@ deploy-PROD:
     - main
   stage: deploy
   timeout: 3d
-  image: ubuntu:20.04
+#  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
     - eval $(ssh-agent -s)
@@ -116,4 +116,4 @@ deploy-PROD:
     - ssh-keyscan -p $PROD_SERVER_PORT $PROD_SERVER_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh escare@$PROD_SERVER_IP -p $PROD_SERVER_PORT "cd skku && nohup ./kuber.sh &"
+    - ssh escare@$PROD_SERVER_IP -p $PROD_SERVER_PORT "cd skku/prod && nohup ./kuber.sh &"
