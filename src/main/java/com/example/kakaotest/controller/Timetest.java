@@ -1,6 +1,7 @@
 package com.example.kakaotest.controller;
 
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -18,15 +19,17 @@ import java.util.Date;
 @Slf4j
 @Configuration
 @EnableScheduling
+@AllArgsConstructor
 public class Timetest{
 
     private final JobLauncher jobLauncher;
-    private final Job job;
+    private final Job simpleJob;
+    private final Job updateGroupJob;
 
-    public Timetest(JobLauncher jobLauncher, @Qualifier("simpleJob") Job job) {
-        this.jobLauncher = jobLauncher;
-        this.job = job;
-    }
+//    public Timetest(JobLauncher jobLauncher, @Qualifier("simpleJob") Job job) {
+//        this.jobLauncher = jobLauncher;
+//        this.job = job;
+//    }
 
     @Scheduled(cron = "0 00 00 * * *") // 10초
     public void simpleJobIterable() {
@@ -34,7 +37,17 @@ public class Timetest{
             JobParameters jobParameters = new JobParametersBuilder()
                     .addDate("date",  new Date())
                     .toJobParameters();
-            jobLauncher.run(job, jobParameters);
+            jobLauncher.run(updateGroupJob, jobParameters);
+            log.info("----------------------------------------- UPDATE GROUP DONE ---------------------------------------------------------");
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        try {
+            JobParameters jobParameters = new JobParametersBuilder()
+                    .addDate("date",  new Date())
+                    .toJobParameters();
+            jobLauncher.run(simpleJob, jobParameters);
+            log.info("----------------------------------------- EXPIRE DATE CHECKING DONE --------------------------------------------------");
         } catch (Exception e) {
             log.info(e.getMessage());
         }

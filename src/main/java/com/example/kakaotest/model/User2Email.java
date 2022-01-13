@@ -19,4 +19,5 @@ public class User2Email {
     @JoinColumn(name = "UserInfo_userCode")
     @ManyToOne
     private UserInfo userCode;
+
 }
