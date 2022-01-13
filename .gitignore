@@ -5,3 +5,7 @@
 /.settings
 /.idea
 /.idea/
+/.vscode
+/build
+/.idea
+myCert.p12

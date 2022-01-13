@@ -15,5 +15,5 @@ public class UserInfo {
 
     // 유저 아이디 (이름 예정)
     @Column
-    private String id;
+    private String userName;
 }
