@@ -10,9 +10,7 @@ build-job:
  stage: build-job
 
  # Tag is identifier to select which gitlab-runner instance to use
- # Current 'ubtag' is gilab runner instance in Dorika's private linux server (ubuntu 20.04 server), running as docker container.
  tags:
-#   - ubtag
    - escare
  image: openjdk:11
  script:
@@ -31,12 +29,10 @@ build-job:
 
 docker-build-push:
  tags:
-#   - ubtag
    - escare
  image: docker:latest
  stage: build
  script:
-#   - echo hi
    - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
    - docker build -t tim0726/kakaotest:0.1 .
    - docker push tim0726/kakaotest:0.1
@@ -49,13 +45,11 @@ docker-build-push:
 # Using server is contributor dorika's personal server -- ubuntu 20.04 server.
 deploy-DEV:
   tags:
-#    - ubtag
     - escare
   only:
     - dev
   stage: deploy
   timeout: 3d
-#  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
     - eval $(ssh-agent -s)
@@ -74,13 +68,11 @@ deploy-DEV:
 # Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-QA:
   tags:
-#    - ubtag
     - escare
   only:
     - QA
   stage: deploy
   timeout: 3d
-#  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
     - eval $(ssh-agent -s)
@@ -99,13 +91,11 @@ deploy-QA:
 # Now(21.12.23) have connection issue, so use save server as DEVELOPMENT process.
 deploy-PROD:
   tags:
-#    - ubtag
     - escare
   only:
     - main
   stage: deploy
   timeout: 3d
-#  image: ubuntu:20.04
   before_script:
     - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
     - eval $(ssh-agent -s)
