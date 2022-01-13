@@ -66,7 +66,6 @@ deploy-DEV:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh escare@$DEV_SERVER_IP -p $DEV_SERVER_PORT "cd skku/dev && nohup ./kuber.sh &"
-#    - ssh dorika@$DEV_SERVER_IP "cd kubetest && nohup ./kuber.sh &"
 
 
 
