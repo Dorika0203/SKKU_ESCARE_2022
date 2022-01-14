@@ -45,7 +45,7 @@
             <div class="app-header-left">
                 <div class="widget-content p-0">
                     <div class="widget-content-wrapper">
-                        <a href="config"> | group </a>
+                        <a href="config"> | groupasdf </a>
                     </div>
                 </div>
             </div>
