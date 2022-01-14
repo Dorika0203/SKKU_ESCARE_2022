@@ -413,7 +413,7 @@ public class Home {
 
     // ------------------------------------------------------------------ rekey ---------------------------------------------- //
     @GetMapping(path="/rekey")
-    public String rekey(String groupName, String sobjectName, Model model) throws ApiException {
+    public String rekey(String sobjectName, Model model) throws ApiException {
         //Verify client to access groups and keys
         String server = "https://sdkms.fortanix.com";
         String username = "ysoh1205@g.skku.edu";

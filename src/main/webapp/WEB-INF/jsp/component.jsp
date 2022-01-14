@@ -45,7 +45,7 @@
             <div class="app-header-left">
                 <div class="widget-content p-0">
                     <div class="widget-content-wrapper">
-                        <a href="group"> | group </a>
+                        <a href="config"> | group </a>
                     </div>
                 </div>
             </div>
